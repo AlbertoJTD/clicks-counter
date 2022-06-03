@@ -1,15 +1,20 @@
 import './App.css';
-import logo from './images/spiderman.png'
-import Button from './components/Button'
+import logo from './images/spiderman.png';
+import Button from './components/Button';
+import Counter from './components/Counter';
+
+import { useState } from 'react';
 
 function App() {
 
+  const [clicksNumber, setClicksNumber] = useState(0);
+
   const handleClick = () => {
-    console.log('Click')
+    setClicksNumber(clicksNumber + 1);
   }
 
   const restartCounter = () => {
-    console.log('Restart')
+    setClicksNumber(0);
   }
 
   return (
@@ -20,6 +25,10 @@ function App() {
       </div>
       
       <div className='main-container'>
+        <Counter 
+          clicksNumber = { clicksNumber }
+        />
+
         <Button 
           text = 'Click'
           isRestartButton = { false }
